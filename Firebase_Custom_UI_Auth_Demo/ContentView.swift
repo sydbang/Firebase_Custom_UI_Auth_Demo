@@ -5,17 +5,24 @@
 //  Created by Sunghee Bang on 2022-03-17.
 //
 
+
 import SwiftUI
+import FirebaseAuth
 
 struct ContentView: View {
+    
+    @Binding var loggedIn: Bool
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
+        VStack {
+            Text("Welcome")
+            Button {
+                try! Auth.auth().signOut()
+                loggedIn = false
+            } label: {
+                Text("Sign Out")
+                
+            }
+        }
     }
 }
