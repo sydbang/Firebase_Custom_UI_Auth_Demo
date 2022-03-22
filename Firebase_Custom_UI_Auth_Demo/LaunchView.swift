@@ -11,25 +11,44 @@ import FirebaseAuth
 struct LaunchView: View {
     @State var loggedIn = false // this should technically be in a viewmodel
     @State var loginFormShowing = false
+    @State var createAccountFormShowing = false
     
     var body: some View {
         
         // Check the logged in property and show the appropriate view
         if !loggedIn {
             
-            // Show logged out view
-            Button {
-                // Show the login form
-                loginFormShowing = true
-            } label: {
-                Text("Sign In")
-            }
-            .sheet(isPresented: $loginFormShowing, onDismiss: checkLogin) {
-                LoginForm(formShowing: $loginFormShowing)
+            VStack (spacing: 20){
+                // Show logged out view
+                
+                // Sign in button
+                Button {
+                    // Show the login form
+                    loginFormShowing = true
+                } label: {
+                    Text("Sign In")
+                }
+                .sheet(isPresented: $loginFormShowing, onDismiss: checkLogin) {
+                    LoginForm(formShowing: $loginFormShowing)
+                }
+                
+                // Create account button
+                Button {
+                    // Show the login form
+                    createAccountFormShowing = true
+                } label: {
+                    Text("Create Account")
+                }
+                .sheet(isPresented: $createAccountFormShowing, onDismiss: checkLogin) {
+                    CreateAccountForm(formShowing: $createAccountFormShowing)
+                }
+                
             }
             .onAppear{
                 checkLogin()
             }
+            
+            
         } else {
             // Show logged in view
             ContentView(loggedIn: $loggedIn)
