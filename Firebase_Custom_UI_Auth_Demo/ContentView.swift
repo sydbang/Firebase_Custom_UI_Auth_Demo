@@ -15,7 +15,7 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            Text("Welcome")
+            Text("Welcome!")
             Button {
                 try! Auth.auth().signOut()
                 loggedIn = false

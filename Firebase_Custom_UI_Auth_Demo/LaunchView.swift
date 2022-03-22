@@ -22,10 +22,10 @@ struct LaunchView: View {
                 // Show the login form
                 loginFormShowing = true
             } label: {
-                Text("Sign In or Create New Account")
+                Text("Sign In")
             }
             .sheet(isPresented: $loginFormShowing, onDismiss: checkLogin) {
-                LoginForm()
+                LoginForm(formShowing: $loginFormShowing)
             }
             .onAppear{
                 checkLogin()
@@ -37,7 +37,7 @@ struct LaunchView: View {
     }
     
     func checkLogin() {
-        loggedIn = FUIAuth.defaultAuthUI()?.auth?.currentUser == nil ? false:true
+        loggedIn = Auth.auth().currentUser == nil ? false:true
     }
     
 }
