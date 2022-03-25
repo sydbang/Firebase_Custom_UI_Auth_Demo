@@ -8,5 +8,6 @@ target 'Firebase_Custom_UI_Auth_Demo' do
   # Pods for Firebase_Custom_UI_Auth_Demo
 
 pod 'Firebase/Auth'
+pod 'Firebase/Firestore'
 
 end
