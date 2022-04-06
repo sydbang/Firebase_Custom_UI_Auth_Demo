@@ -57,7 +57,7 @@ struct LaunchView: View {
     
     func checkLogin() {
         loggedIn = Auth.auth().currentUser == nil ? false:true
-        // Auth.auth().currentUser?.uid
+        // Auth.auth().currentUser?.uid (grabs current user id)
     }
     
 }
